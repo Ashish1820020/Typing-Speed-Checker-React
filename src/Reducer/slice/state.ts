@@ -10,7 +10,7 @@ const initialState: initialStates = {
   totalWrong: 0,
   currIndex: 0,
   start: false,
-  timer: 10,
+  timer: 60,
   wpm: 0,
   cpm: 0,
   accurecy: 0
