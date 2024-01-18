@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+body{
+  background-color: rgb(127, 217, 238);
+  background-color: #f6f6f7;
+}
+.App {
+  width: 100vw;
+  margin-bottom: 5rem;
+}
+
+/* heading */
+.header{
+  text-align: center;
+  font-style: italic;
+  font-size: 2rem;
+  font-weight: 900;
+  width: fit-content;
+  margin: .5rem auto 5rem;
+}
+
+/* Timer Result and Restart section */
+.top-section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: auto;
+  height: 8rem;
+}
+
+.timer{
+  background-color: #ffd001;
+  border-radius: 50%;
+  padding: .2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.timer div,
+.result-container div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  background-color: white;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.result-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.result-container .box{
+  font-size: 1.6rem;
+  border-radius: 20px;
+  height: 6rem;
+  width: 6rem;
+}
+
+.timer div span,
+.result-container div span{
+  font-size: .8rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.input-section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: transparent;
+  background-color: rgba(0, 0, 0, 0.205);
+  box-shadow: none;
+  width: fit-content;
+}
+
+.icon{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  background-color: #4FC3A1;
+  padding: .3rem;
+}
+
+.icon svg{
+  font-size: 1.3rem;
+  color: white;
+}
+
+.icon:hover{
+  cursor: pointer;
+  transform: scale(1.05);
+  background-color: #4fc3a0d1;
+}
+
+/* Text and User input section */
+.show-text{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  background-color: white;
+  overflow: hidden;
+  width: 87%;
+  max-width: 1000px;
+  margin: 4rem auto;
+  padding: .5rem 2rem;
+  border-radius: 5px;
+  box-shadow: 0 0 .5rem black;
+}
+
+.show-text span{
+  font-family: 'Baloo Bhai 2', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  padding: 3px 0px 3px 0px;
+  font-weight: 800;
+  font-size: 2rem;
+}
+
+.clicked .active span {
+  height: 24px;
+  margin-bottom: -4px;
+  width: 2px;
+  opacity: 0;
+  display: inline-block;
+  background-color: white;
+  background: rgb(236, 0, 0);
+  animation: blink .5s linear infinite alternate;
+}
+span span {
+  height: 20px;
+  margin-bottom: -4px;
+  width: 2px;
+  opacity: 0;
+  display: inline-block;
+  background-color: white;
+}
+
+.space{
+  margin: 3px 5px 3px 5px;
+}
+
+
+/* History Button */
+.button-container{
+  width: 93%;
+  margin: auto;
+  display: flex;
+}
+.history-button{
+  background-color: #4FC3A1;
+  padding: .5rem .8rem;
+  color: white;
+  font-weight: 900;
+  font-size: 1.2rem;
+  border: none;
+  margin-left: auto;
+  border-radius: 3px;
+}
+.history-button:hover{
+  background-color: #4fc3a0d1;
+  cursor: pointer;
+}
+
+.notice{
+  text-align: center;
+  color: red;
+  font-size: 1.4rem;
+  font-weight: 900;
+}
+
+
+/* History Table Section */
+.table-container{
+  margin: 5rem auto;
+  border-radius: 5px;
+}
+
+.table-container table {
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: normal;
+  border: none;
+  width: 93%;
+  max-width: 1000px;
+  margin: auto;
+  border-collapse: collapse;
+  white-space: nowrap;
+  background-color: white;
+}
+
+.table-container table td, 
+.table-container table th {
+  text-align: center;
+  padding: 8px;
+}
+
+.table-container table td {
+  border-right: 1px solid #f8f8f8;
+  font-size: 12px;
+}
+
+.table-container table thead th {
+  color: #ffffff;
+  background: #4FC3A1;
+}
+
+
+.table-container table thead th:nth-child(odd) {
+  color: #ffffff;
+  background: #324960;
+}
+
+.table-container table tr:nth-child(even) {
+  background: #F8F8F8;
+}
+
+
+/* utility classes */
+.correct{
+  color: green;
+}
+.wrong{
+  color: red;
+}
+.clicked{
+  box-shadow: 0 0 1rem black;
+}
+
+
+
+/* Responsive */
+@media (max-width: 767px) {
+  .table-container table {
+      display: block;
+      width: 100%;
+  }
+  .table-wrapper:before{
+      content: "Scroll horizontally >";
+      display: block;
+      text-align: right;
+      font-size: 11px;
+      color: white;
+      padding: 0 0 10px;
+  }
+  .table-container table thead th:last-child{
+      border-bottom: none;
+  }
+  .table-container table thead {
+      float: left;
+  }
+  .table-container table tbody {
+      width: auto;
+      position: relative;
+      overflow-x: auto;
+  }
+  .table-container table td, .table-container table th {
+      padding: 20px .625em .625em .625em;
+      height: 60px;
+      vertical-align: middle;
+      box-sizing: border-box;
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 120px;
+      font-size: 13px;
+      text-overflow: ellipsis;
+  }
+  .table-container table thead th {
+      text-align: left;
+      border-bottom: 1px solid #f7f7f9;
+  }
+  .table-container table tbody tr:nth-child(odd) {
+      background: none;
+  }
+  .table-container table tr:nth-child(even) {
+      background: transparent;
+  }
+  .table-container table tr td:nth-child(odd) {
+      background: #F8F8F8;
+      border-right: 1px solid #E6E4E4;
+  }
+  .table-container table tr td:nth-child(even) {
+      border-right: 1px solid #E6E4E4;
+  }
+  .table-container table tbody td {
+      text-align: center;
+  }
+}
+
+@keyframes blink {
+  20% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.25;
+  }
+  60% {
+    opacity: 0.50;
+  }
+  80% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+  }
+}
