@@ -28,7 +28,6 @@ const PreviousDataComponent = ({start}: {start: boolean}) => {
                         <th>WPM</th>
                         <th>Accurecy</th>
                         <th>Performance</th>
-                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,7 +42,6 @@ const PreviousDataComponent = ({start}: {start: boolean}) => {
                                         <td>{wpm}</td>
                                         <td>{accurecy}</td>
                                         <td>{remark}</td>
-                                        <td>remove</td>
                                     </tr>
                                 )
                             })
