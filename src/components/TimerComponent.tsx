@@ -7,13 +7,15 @@ const TimerComponent = () => {
     
   const {start, timer} = useSelector ((state: any) => state.stateSlice);
   const dispatch = useDispatch<RootState>();
+
+
     useEffect(() => {
       let interval: string | number | NodeJS.Timeout | undefined;
       
       if(start){
         interval = setInterval(() => {
             timer>0 && dispatch(setTimer(timer-1));
-            timer===0 && dispatch(setStart(false));
+            timer===0 && dispatch(setStart(false));  //time ended
         }, 1000);
       }
       else{

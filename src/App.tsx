@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {randomTextGenerator, allowedKeys} from './text'
 import TextComponent from './components/TextComponent';
 import { RootState } from "./Reducer/store";
-import { setTextFinished, setCorrectOrWrong, setStart, setCurrIndex, calcStats, manageBackspace } from "./Reducer/slice/state"
+import { setTextFinished, setCorrectOrWrong, setStart, calcStats, manageBackspace } from "./Reducer/slice/state"
 import Result from './components/Result';
 import TimerComponent from './components/TimerComponent';
 import { getCurrentDate, getDataFromLocalstorage, getRemark, historyInterface, initialStates } from './helper';
@@ -34,27 +34,27 @@ function App() {
       if(e.key !== " ") 
         dispatch(setCorrectOrWrong({currIndex, mode: 'correct'}));
       else{
-        dispatch(setCurrIndex(currIndex+1));
-        dispatch(calcStats({}));
+        dispatch(calcStats(currIndex+1));
       }  
     }
     else {
-      //handling text changing
-      if(currIndex === charArray.length && e.key === " "){
-        dispatch(setTextFinished(randomTextGenerator()));
+      if(currIndex === charArray.length){
+        // handling text changing when time left
+        if(e.key === " "){
+          dispatch(setTextFinished(randomTextGenerator()));
+        }
       }
-      //handling the wrong entry
-      if(isAllowed && currChar !== " "){  //typed allowed char in place of another char</HTMLDivElement></HTMLDivElement>
-        dispatch(setCorrectOrWrong({currIndex, mode: 'wrong'}));
-      }
-      if(isAllowed && currChar === " "){ //typed allowed char in place of space
-      }
-      // handling backspace click case
-      if(e.key === 'Backspace' && currIndex>0){
-        charArray[currIndex-1] !== " " && dispatch(manageBackspace(currIndex-1));
+      else{
+        //handling the wrong entry
+        if(isAllowed && currChar !== " "){  //typed allowed char in place of another char</HTMLDivElement></HTMLDivElement>
+          dispatch(setCorrectOrWrong({currIndex, mode: 'wrong'}));
+        }
+        // handling backspace click case
+        if(e.key === 'Backspace' && currIndex>0){
+          charArray[currIndex-1] !== " " && dispatch(manageBackspace(currIndex-1));
+        }
       }
     }
-    
   }
   
   // storing the data to the localstorage
@@ -63,7 +63,6 @@ function App() {
     const obj = {date: getCurrentDate(), wpm, cpm, accurecy, totalCorrect, totalWrong, remark: getRemark(wpm)}
     localData.push(obj);
     localStorage.setItem('typingData', JSON.stringify(localData));
-    console.log("adding to local storage"); 
   }
   
   

@@ -23,22 +23,6 @@ const stateSlice = createSlice({
       setCurrText(state, action){
         state.currText = action.payload;
       },
-      setCorrect: (state, action) => {
-        state.correct = [...state.correct, action.payload];
-        state.currIndex = action.payload+1;
-        state.totalCorrect += 1;
-        const stats = getStats(state.totalCorrect, state.totalWrong);
-        state.cpm = stats.cpm;
-        state.accurecy = stats.accurecy;
-      },
-      setWrong: (state, action) => {
-        state.wrong = [...state.wrong, action.payload];
-        state.totalWrong += 1;
-        state.currIndex = action.payload+1;
-        const stats = getStats(state.totalCorrect, state.totalWrong);
-        state.cpm = stats.cpm;
-        state.accurecy = stats.accurecy;
-      },
       setCorrectOrWrong: (state, action) => {
         if(action.payload.mode === 'correct'){
           state.correct = [...state.correct, action.payload.currIndex];
@@ -98,6 +82,7 @@ const stateSlice = createSlice({
       },
       calcStats(state, action){
         const stats = getStats(state.totalCorrect, state.totalWrong);
+        state.currIndex = action.payload;
         state.wpm = state.wpm + 1;
         state.cpm = stats.cpm;
         state.accurecy = stats.accurecy;
@@ -110,5 +95,5 @@ const stateSlice = createSlice({
     const accurecy = Number(((totalCorrect/cpm) * 100).toFixed(2));
     return {cpm, accurecy};
   }
-  export const { setWrong, setCorrect, setCurrIndex, setTimer, setResart, setStart, calcStats, setCurrText, setTextFinished, manageBackspace, setCorrectOrWrong } = stateSlice.actions;
+  export const { setCurrIndex, setTimer, setResart, setStart, calcStats, setCurrText, setTextFinished, manageBackspace, setCorrectOrWrong } = stateSlice.actions;
   export default stateSlice.reducer;

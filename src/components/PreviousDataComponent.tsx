@@ -40,7 +40,7 @@ const PreviousDataComponent = ({start}: {start: boolean}) => {
                                         <td>{totalWrong}</td>
                                         <td>{cpm}</td>
                                         <td>{wpm}</td>
-                                        <td>{accurecy}</td>
+                                        <td>{accurecy} %</td>
                                         <td>{remark}</td>
                                     </tr>
                                 )
